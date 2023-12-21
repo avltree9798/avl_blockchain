@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "avl-blockchain"
+version = "0.1.0"
+description = ""
+authors = ["Anthony V <anthonyviriya98@gmail.com>"]
+readme = "README.md"
+packages = [{include = "avl_blockchain"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+
+
+[tool.poetry.group.dev.dependencies]
+flake8 = "^6.1.0"
+tox = "^4.11.4"
+pytest = "^7.4.3"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
