@@ -10,7 +10,7 @@ class TestBlock(unittest.TestCase):
         data = "Block Data"
         previous_block = Block(0, "Genesis Block", None)
 
-        block = Block(1, data, previous_block)
+        block = Block(1, data, previous_block.hash)
 
         # Check if the block's index is correct
         self.assertEqual(block.index, 1)
@@ -19,7 +19,7 @@ class TestBlock(unittest.TestCase):
         self.assertEqual(block.data, data)
 
         # Check if the block's previous is correct
-        self.assertIs(block.previous, previous_block)
+        self.assertEqual(block.previous_hash, previous_block.hash)
 
         # Check if the block's hash is a valid SHA256 hash
         self.assertTrue(len(block.hash), 64)
@@ -29,8 +29,8 @@ class TestBlock(unittest.TestCase):
         """Test if the block's hash changes with different data."""
 
         previous_block = Block(0, "Genesis Block", None)
-        block1 = Block(1, "Block Data 1", previous_block)
-        block2 = Block(1, "Block Data 2", previous_block)
+        block1 = Block(1, "Block Data 1", previous_block.hash)
+        block2 = Block(1, "Block Data 2", previous_block.hash)
 
         # Check if different data results in different hashes
         self.assertNotEqual(block1.hash, block2.hash)
@@ -39,7 +39,7 @@ class TestBlock(unittest.TestCase):
         """Test the string representation of the block."""
 
         previous_block = Block(0, "Genesis Block", None)
-        block = Block(1, "Block Data", previous_block)
+        block = Block(1, "Block Data", previous_block.hash)
 
         expected_str = f'{block.index}{block.timestamp}{block.data}{previous_block.hash}'
         self.assertEqual(str(block), expected_str)

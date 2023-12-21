@@ -14,6 +14,6 @@ for block in blockchain.chain:
     print("Timestamp: " + str(block.timestamp))
     print("Data: " + block.data)
     print("Hash: " + block.hash)
-    print("Previous Hash: " + block.previous.hash if block.previous else '0')
+    print("Previous Hash: " + block.previous_hash if block.previous_hash else '0')
     print("\n")
 print(blockchain.is_valid())
