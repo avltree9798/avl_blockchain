@@ -17,4 +17,18 @@ pip install poetry
 poetry install
 ```
 
-## Usage
+## Usage
+Here's a quick example of how to create a blockchain and add a block:
+```python
+from avl_blockchain.block import Block
+from avl_blockchain.blockchain import Blockchain
+
+# Create a new blockchain
+blockchain = Blockchain()
+
+# Add a new block
+blockchain.add_block(Block(1, 'Test Block', None))
+
+# Verify the blockchain
+print(blockchain.is_valid())
+```
