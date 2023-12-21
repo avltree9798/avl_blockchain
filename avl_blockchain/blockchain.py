@@ -12,7 +12,7 @@ class Blockchain:
         return self.chain[-1]
 
     def add_block(self, block: Block):
-        block.previous = self.get_latest_block()
+        block.previous_hash = self.get_latest_block().hash
         block.hash = block.get_hash()
         self.chain.append(block)
 
@@ -22,6 +22,6 @@ class Blockchain:
             current_block = self.chain[i]
             if current_block.hash != current_block.get_hash():
                 return False
-            if current_block.previous.hash != previous_block.hash:
+            if current_block.previous_hash != previous_block.hash:
                 return False
         return True
